@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Village Assistant — Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">🌾 Smart Village Assistant</div>
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#schemes">Schemes</a>
+      <a href="#health">Health</a>
+      <a href="#learn">Learn</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Empowering Villages with Smart Technology</h1>
+      <p>“An AI-integrated platform providing unified access to agriculture support, healthcare services, educational resources, and government schemes.”</p>
+      <div class="cta">
+        <button onclick="scrollToSection('tools')">Explore Features</button>
+        <button class="outline" onclick="downloadSite()">Download Data</button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- Agriculture Tools -->
+    <section id="tools" class="section">
+      <h2>🌱 Agriculture Tools</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Quick Crop Advisor</h3>
+          <label>Soil type</label>
+          <select id="soilSelect">
+            <option value="Loamy">Loamy</option>
+            <option value="Clayey">Clayey</option>
+            <option value="Sandy">Sandy</option>
+            <option value="All">All</option>
+          </select>
+          <label>Season</label>
+          <select id="seasonSelect">
+            <option value="Rabi">Rabi</option>
+            <option value="Kharif">Kharif</option>
+            <option value="Zaid">Zaid</option>
+            <option value="All">All</option>
+          </select>
+          <button onclick="getCropSuggestions()">Get Suggestions</button>
+          <div id="cropResults"></div>
+        </div>
+
+        <div class="card">
+          <h3>Mandi Price Updates</h3>
+          <div id="marketPrices"></div>
+          <small>Demo prices — connect live APIs for real data.</small>
+        </div>
+
+        <div class="card">
+          <h3>Pest & Disease Analyzer</h3>
+          <input type="file" id="pestImg" accept="image/*">
+          <button onclick="analyzePest()">Analyze</button>
+          <div id="pestResult"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Government Schemes -->
+    <section id="schemes" class="section">
+      <h2>📜 Government Schemes</h2>
+      <div class="grid">
+        <div class="card">
+          <label>Farmer type</label>
+          <select id="farmerType">
+            <option value="small">Small & Marginal</option>
+            <option value="tenant">Tenant</option>
+            <option value="large">Large</option>
+          </select>
+          <label>State</label>
+          <select id="stateSelect">
+            <option>Uttar Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Bihar</option>
+            <option>Rajasthan</option>
+          </select>
+          <button onclick="findSchemes()">Find Schemes</button>
+          <div id="schemeResults"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Healthcare -->
+    <section id="health" class="section">
+      <h2>🏥 Healthcare Services</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Telemedicine Booking</h3>
+          <input id="patName" placeholder="Your Name">
+          <input id="patVillage" placeholder="Village">
+          <textarea id="symptoms" rows="3" placeholder="Symptoms"></textarea>
+          <button onclick="bookAppointment()">Book</button>
+          <div id="bookMsg"></div>
+        </div>
+        <div class="card">
+          <h3>Vaccination Reminders</h3>
+          <input id="childName" placeholder="Child Name">
+          <input id="dueDate" type="date">
+          <button onclick="addReminder()">Add Reminder</button>
+          <div id="remList"></div>
+        </div>
+        <div class="card">
+          <h3>Community Forum</h3>
+          <div class="chat" id="chatBox"></div>
+          <input id="chatUser" placeholder="Your Name">
+          <input id="chatMsg" placeholder="Message">
+          <button onclick="postMsg()">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Village Development -->
+    <section id="learn" class="section">
+      <h2>🌍 Smart Village Development</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>💧 Clean Water & Sanitation</h3>
+          <p>Safe water, hygiene, and sanitation practices.</p>
+          <button onclick="openResource('water')">Open</button>
+        </div>
+        <div class="card">
+          <h3>⚡ Renewable Energy</h3>
+          <p>Solar, biogas, and clean energy awareness.</p>
+          <button onclick="openResource('energy')">Open</button>
+        </div>
+        <div class="card">
+          <h3>🌐 Digital Connectivity</h3>
+          <p>Internet, digital payments & e-services.</p>
+          <button onclick="openResource('digital')">Open</button>
+        </div>
+        <div class="card">
+          <h3>🚌 Smart Transport</h3>
+          <p>Eco-friendly mobility & rural transport.</p>
+          <button onclick="openResource('transport')">Open</button>
+        </div>
+        <div class="card">
+          <h3>♻️ Waste Management</h3>
+          <p>Recycling, composting & eco disposal.</p>
+          <button onclick="openResource('waste')">Open</button>
+        </div>
+        <div class="card">
+          <h3>🌳 Environment & Sustainability</h3>
+          <p>Green living, plantation & climate care.</p>
+          <button onclick="openResource('environment')">Open</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="infoModal" class="modal">
+    <div class="modal-content">
+      <h3 id="modalTitle"></h3>
+      <p id="modalText"></p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Smart Village Assistant — made by Sanjeev Kumar
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
